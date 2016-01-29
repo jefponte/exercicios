@@ -4,3 +4,7 @@
 /Lista_00/.project
 /Lista_00/.cproject
 /Lista_00/.gitignore
+/Lista_00/*.cbp
+/Lista_00/*.depend
+/Lista_00/bin/Debug/*.exe
+/Lista_00/obj/Debug/*.o

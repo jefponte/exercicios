@@ -45,6 +45,7 @@ int mainQuestao1() {
 	aux = 0;
 	media = 0;
 
+    printf("Teste");
 	for(i = 0; i < dimensao; i++){
 		if(lista[i]%2){
 			impar++;
@@ -58,10 +59,11 @@ int mainQuestao1() {
 			par++;
 	}
 	printf("--------------\n");
-	media = media/aux;
+	if(aux)
+        media = media/aux;
 	printf("Impares: %d\n", impar);
 	printf("Pares: %d\n", par);
-	printf("Media dos impares maiores que 50:%d\n", media);
+	printf("Media dos impares maiores que 50: %d\n", media);
 	return 0;
 }
 

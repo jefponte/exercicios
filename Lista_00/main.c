@@ -19,10 +19,7 @@ int mainQuestao1() {
 
 
 	printf("\nLista como foi digitada:\n ");
-	printf("\n-----------------\n");
-	//Mostrar lista antes de ordenar.
-	for(i = 0; i < dimensao; i++)
-		printf("Elemento %d: %d\n", i, lista[i]);
+	mostraVetor(lista,dimensao);
 
 
 
@@ -41,13 +38,13 @@ int mainQuestao1() {
 
 
 	printf("\nLista ordenada:\n ");
-	printf("\n-----------------\n");
+	mostraVetor(lista, dimensao);
 
 	impar = 0;
 	par = 0;
 	aux = 0;
 	media = 0;
-	//Mostrar lista depois de ordenar.
+
 	for(i = 0; i < dimensao; i++){
 		if(lista[i]%2){
 			impar++;
@@ -56,34 +53,27 @@ int mainQuestao1() {
 				media += lista[i];
 				aux++;
 			}
-
 		}
 		else
 			par++;
-		printf("Elemento %d: %d\n", i, lista[i]);
 	}
 	printf("--------------\n");
 	media = media/aux;
 	printf("Impares: %d\n", impar);
 	printf("Pares: %d\n", par);
 	printf("Media dos impares maiores que 50:%d\n", media);
-
-
 	return 0;
 }
 
 void mostraVetor(int *vetor, int dimensao){
 	int i;
-	for(i = 0; i < dimensao; i++){
+	for(i = 0; i < dimensao; i++)
 		printf("Elemento [%d]: %d\n", i, vetor[i]);
-	}
 }
 
 int mainQuestao2(){
 	int dimensaoX, dimensaoY, dimensaoW, i, menorX, maiorX;
 	int vetorX[N], vetorY[N], vetorW[N];
-
-
 	printf("Digite a dimensão do vetor X, no máximo %d:", N);
 	scanf("%d", &dimensaoX);
 	for(i = 0; i < dimensaoX; i++){
@@ -107,6 +97,7 @@ int mainQuestao2(){
 
 
 	printf("Vetor X:\n");
+
 
 
 	return 0;

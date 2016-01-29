@@ -1,19 +1,35 @@
 #include <stdio.h>
 
 int mainQuestao1() {
-//
-//	int lista[100];
-//	int dimensao, i;
-//
-//	printf("Digite a dimensão, no máximo 100:");
-//	scanf("%d", dimensao);
-//	for (i = 0; i < dimensao; i++) {
-//		printf("Digite o elemento %d\n", i);
-//		scanf("%d", lista[i]);
-//		if (lista[i] >= 256)
-//			printf("Digite valores menores que 256\n");
-//	}
-//	return 0;
+
+	int lista[100];
+	int dimensao, i;
+
+
+	printf("Digite a dimensão, no máximo 100:");
+	scanf("%d", &dimensao);
+	for(i = 0; i < dimensao; i++){
+		printf("Digite o elemento %d:\n", i);
+		scanf("%d", &lista[i]);
+		if(lista[i] > 256)
+			i--;
+	}
+
+
+	//Mostrar lista antes de ordenar.
+	for(i = 0; i < dimensao; i++)
+		printf("Elemento %d: %d\n", i, lista[i]);
+
+
+
+
+
+
+
+
+
+
+	return 0;
 }
 
 int main() {

@@ -1,2 +1,6 @@
 /.metadata
 /RemoteSystemsTempFiles/*.project
+/Lista_00/.settings/*.prefs
+/Lista_00/.project
+/Lista_00/.cproject
+/Lista_00/.gitignore

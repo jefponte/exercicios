@@ -72,6 +72,41 @@ void mostraVetor(int *vetor, int dimensao){
 	for(i = 0; i < dimensao; i++)
 		printf("Elemento [%d]: %d\n", i, vetor[i]);
 }
+int mainQuestao3(){
+    int dimensaoA, dimensaoC, i;
+    int *vetorA, *vetorB, *vetorC;
+
+    printf("Digite a dimensão do Vetor A:");
+    scanf("%d", &dimensaoA);
+    dimensaoC = 2*dimensaoA;
+    vetorA = malloc(sizeof(int)*dimensaoA);
+    vetorB = malloc(sizeof(int)*dimensaoA);
+    vetorC = malloc(sizeof(int)*dimensaoA*2);
+
+    if(vetorA == NULL || vetorB == NULL || vetorC == NULL)
+    {
+        printf("Memoria Insuficiente");
+        return 0;
+    }
+
+    for(i = 0; i < dimensaoA; i++){
+        scanf("%d", vetorA+i);
+
+    }
+    for(i = 0; i < dimensaoA; i++){
+        scanf("%d", vetorB+i);
+
+    }
+
+
+    printf("Vetor A\n");
+    mostraVetor(vetorA, dimensaoA);
+    printf("Vetor B\n");
+    mostraVetor(vetorA, dimensaoA);
+
+    return 0;
+}
+
 
 int mainQuestao2(){
 	int dimensaoX, dimensaoY, dimensaoW, i, menorX, maiorX, z, achou;
@@ -122,13 +157,10 @@ int mainQuestao2(){
 			if(vetorX[i]== z){
 				achou = 1;
 				printf("Elemento %d encontrado. ", vetorX[i]);
+				return 0;
 			}
 		}
 	}while(!achou);
-	printf("Fim da aplicação.");
-
-
-    //tes
 	return 0;
 }
 
@@ -146,10 +178,10 @@ int main() {
 			mainQuestao1();
 			break;
 		case 2:
-
+            mainQuestao2();
 			break;
 		case 3:
-
+            mainQuestao3();
 			break;
 		case 4:
 

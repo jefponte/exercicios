@@ -1,4 +1,6 @@
 #include <stdio.h>
+#define N 100
+
 
 int mainQuestao1() {
 
@@ -65,6 +67,46 @@ int mainQuestao1() {
 	printf("Impares: %d\n", impar);
 	printf("Pares: %d\n", par);
 	printf("Media dos impares maiores que 50:%d\n", media);
+
+
+	return 0;
+}
+
+void mostraVetor(int *vetor, int dimensao){
+	int i;
+	for(i = 0; i < dimensao; i++){
+		printf("Elemento [%d]: %d\n", i, vetor[i]);
+	}
+}
+
+int mainQuestao2(){
+	int dimensaoX, dimensaoY, dimensaoW, i, menorX, maiorX;
+	int vetorX[N], vetorY[N], vetorW[N];
+
+
+	printf("Digite a dimensão do vetor X, no máximo %d:", N);
+	scanf("%d", &dimensaoX);
+	for(i = 0; i < dimensaoX; i++){
+		printf("Digite o elemento %d:\n", i);
+		scanf("%d", &vetorX[i]);
+	}
+
+	dimensaoY = 0;
+	dimensaoW = 0;
+	for(i = 0; i < dimensaoX; i++){
+		if(vetorX[i] > 10 && vetorX[i] < 40){
+			vetorY[dimensaoY] = vetorX[i];
+			dimensaoY++;
+		}
+		//Posicoes pares
+		if(!(i%2)){
+			vetorW[dimensaoW] = vetorX[i];
+			dimensaoW++;
+		}
+	}
+
+
+	printf("Vetor X:\n");
 
 
 	return 0;

@@ -8,7 +8,7 @@ int mainQuestao1() {
 	int dimensao, i, houveTroca, aux, impar, par, media;
 
 
-	printf("Digite a dimens√£o, no m√°ximo 100:");
+	printf("Digite a dimens„o, no m·ximo 100:");
 	scanf("%d", &dimensao);
 	for(i = 0; i < dimensao; i++){
 		printf("Digite o elemento %d:\n", i);
@@ -74,7 +74,7 @@ void mostraVetor(int *vetor, int dimensao){
 int mainQuestao2(){
 	int dimensaoX, dimensaoY, dimensaoW, i, menorX, maiorX, z, achou;
 	int vetorX[N], vetorY[N], vetorW[N];
-	printf("Digite a dimens√£o do vetor X, no m√°ximo %d:", N);
+	printf("Digite a dimens„o do vetor X, no m·ximo %d:", N);
 	scanf("%d", &dimensaoX);
 	for(i = 0; i < dimensaoX; i++){
 		printf("Digite o elemento %d:\n", i);
@@ -123,9 +123,10 @@ int mainQuestao2(){
 			}
 		}
 	}while(!achou);
-	printf("Fim da aplica√ß√£o.");
+	printf("Fim da aplicaÁ„o.");
 
 
+    //tes
 	return 0;
 }
 
@@ -133,7 +134,7 @@ int main() {
 	int questao;
 
 	do {
-		printf("Digite um n√∫mero entre 0 e 5 ou 0 para sair.\n");
+		printf("Digite um n˙mero entre 0 e 5 ou 0 para sair.\n");
 		scanf("%d", &questao);
 
 		switch (questao) {
@@ -156,7 +157,7 @@ int main() {
 			break;
 
 		default:
-			printf("Comando n√£o encontrado\n");
+			printf("Comando n„o encontrado\n");
 			break;
 
 		}

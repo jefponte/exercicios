@@ -3,7 +3,7 @@
 int mainQuestao1() {
 
 	int lista[100];
-	int dimensao, i, houveTroca, aux;
+	int dimensao, i, houveTroca, aux, impar, par, media;
 
 
 	printf("Digite a dimensão, no máximo 100:");
@@ -41,16 +41,30 @@ int mainQuestao1() {
 	printf("\nLista ordenada:\n ");
 	printf("\n-----------------\n");
 
+	impar = 0;
+	par = 0;
+	aux = 0;
+	media = 0;
 	//Mostrar lista depois de ordenar.
-	for(i = 0; i < dimensao; i++)
+	for(i = 0; i < dimensao; i++){
+		if(lista[i]%2){
+			impar++;
+			if(lista[i] > 50)
+			{
+				media += lista[i];
+				aux++;
+			}
+
+		}
+		else
+			par++;
 		printf("Elemento %d: %d\n", i, lista[i]);
-
-
-
-
-
-
-
+	}
+	printf("--------------\n");
+	media = media/aux;
+	printf("Impares: %d\n", impar);
+	printf("Pares: %d\n", par);
+	printf("Media dos impares maiores que 50:%d\n", media);
 
 
 	return 0;

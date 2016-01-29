@@ -3,7 +3,7 @@
 int mainQuestao1() {
 
 	int lista[100];
-	int dimensao, i;
+	int dimensao, i, houveTroca, aux;
 
 
 	printf("Digite a dimensão, no máximo 100:");
@@ -16,10 +16,34 @@ int mainQuestao1() {
 	}
 
 
+	printf("\nLista como foi digitada:\n ");
+	printf("\n-----------------\n");
 	//Mostrar lista antes de ordenar.
 	for(i = 0; i < dimensao; i++)
 		printf("Elemento %d: %d\n", i, lista[i]);
 
+
+
+	//Ordem decrescente.
+	do{
+		houveTroca = 0;
+		for(i = 0; i < (dimensao - 1); i++){
+			if(lista[i] < lista[i+1]){
+				aux = lista[i];
+				lista[i] = lista[i+1];
+				lista[i+1] = aux;
+				houveTroca = 1;
+			}
+		}
+	}while(houveTroca);
+
+
+	printf("\nLista ordenada:\n ");
+	printf("\n-----------------\n");
+
+	//Mostrar lista depois de ordenar.
+	for(i = 0; i < dimensao; i++)
+		printf("Elemento %d: %d\n", i, lista[i]);
 
 
 

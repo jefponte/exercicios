@@ -2,12 +2,10 @@
 #define N 100
 
 
-int mainQuestao1() {
+int mainQ1() {
 
 	int lista[100];
 	int dimensao, i, houveTroca, aux, impar, par, media;
-
-
 	printf("Digite a dimensão, no máximo 100:");
 	scanf("%d", &dimensao);
 	for(i = 0; i < dimensao; i++){
@@ -16,12 +14,8 @@ int mainQuestao1() {
 		if(lista[i] > 256)
 			i--;
 	}
-
-
 	printf("\nLista como foi digitada:\n ");
 	mostraVetor(lista,dimensao);
-
-
 
 	//Ordem decrescente.
 	do{
@@ -67,48 +61,8 @@ int mainQuestao1() {
 	return 0;
 }
 
-void mostraVetor(int *vetor, int dimensao){
-	int i;
-	for(i = 0; i < dimensao; i++)
-		printf("Elemento [%d]: %d\n", i, vetor[i]);
-}
-int mainQuestao3(){
-    int dimensaoA, dimensaoC, i;
-    int *vetorA, *vetorB, *vetorC;
 
-    printf("Digite a dimensão do Vetor A:");
-    scanf("%d", &dimensaoA);
-    dimensaoC = 2*dimensaoA;
-    vetorA = malloc(sizeof(int)*dimensaoA);
-    vetorB = malloc(sizeof(int)*dimensaoA);
-    vetorC = malloc(sizeof(int)*dimensaoA*2);
-
-    if(vetorA == NULL || vetorB == NULL || vetorC == NULL)
-    {
-        printf("Memoria Insuficiente");
-        return 0;
-    }
-
-    for(i = 0; i < dimensaoA; i++){
-        scanf("%d", vetorA+i);
-
-    }
-    for(i = 0; i < dimensaoA; i++){
-        scanf("%d", vetorB+i);
-
-    }
-
-
-    printf("Vetor A\n");
-    mostraVetor(vetorA, dimensaoA);
-    printf("Vetor B\n");
-    mostraVetor(vetorA, dimensaoA);
-
-    return 0;
-}
-
-
-int mainQuestao2(){
+int mainQ2(){
 	int dimensaoX, dimensaoY, dimensaoW, i, menorX, maiorX, z, achou;
 	int vetorX[N], vetorY[N], vetorW[N];
 	printf("Digite a dimensão do vetor X, no máximo %d:", N);
@@ -164,6 +118,37 @@ int mainQuestao2(){
 	return 0;
 }
 
+int mainQ3(){
+    int dimensaoA, dimensaoC, i;
+    int *vetorA, *vetorB, *vetorC;
+    printf("Digite a dimensão do Vetor A:");
+    scanf("%d", &dimensaoA);
+    dimensaoC = 2*dimensaoA;
+    vetorA = malloc(sizeof(int)*dimensaoA);
+    vetorB = malloc(sizeof(int)*dimensaoA);
+    vetorC = malloc(sizeof(int)*dimensaoA*2);
+    if(vetorA == NULL || vetorB == NULL || vetorC == NULL)
+    {
+        printf("Memoria Insuficiente");
+        return 0;
+    }
+    for(i = 0; i < dimensaoA; i++){
+        scanf("%d", vetorA+i);
+    }
+    for(i = 0; i < dimensaoA; i++){
+        scanf("%d", vetorB+i);
+
+    }
+
+
+    printf("Vetor A\n");
+    mostraVetor(vetorA, dimensaoA);
+    printf("Vetor B\n");
+    mostraVetor(vetorA, dimensaoA);
+
+    return 0;
+}
+
 int main() {
 	int questao;
 
@@ -175,10 +160,10 @@ int main() {
 		case 0:
 			break;
 		case 1:
-			mainQuestao1();
+			mainQ1();
 			break;
 		case 2:
-            mainQuestao2();
+            mainQ2();
 			break;
 		case 3:
             mainQuestao3();
@@ -200,4 +185,10 @@ int main() {
 
 	printf("Fim do programa!!!\n\n\n");
 	return 0;
+}
+
+void mostraVetor(int *vetor, int dimensao){
+	int i;
+	for(i = 0; i < dimensao; i++)
+		printf("Elemento [%d]: %d\n", i, vetor[i]);
 }

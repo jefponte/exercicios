@@ -3,7 +3,7 @@
 
 int main()
 {
-       int dimensaoA, dimensaoC, i;
+    int dimensaoA, dimensaoC, i;
     int *vetorA, *vetorB, *vetorC;
     printf("Digite a dimensão para vetores A e B:");
     scanf("%d", &dimensaoA);

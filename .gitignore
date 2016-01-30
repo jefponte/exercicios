@@ -18,3 +18,8 @@
 /Lista_00/Q3/*.cbp
 /Lista_00/Q3/bin/Debug/*.exe
 /Lista_00/Q3/obj/Debug/*.o
+*.cbp
+*.layout
+*.depend
+*.exe
+*.o

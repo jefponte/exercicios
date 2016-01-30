@@ -160,6 +160,11 @@ int mainQ3(){
     return 0;
 }
 
+int mainQ4(){
+
+
+    return 0;
+}
 int main() {
 	int questao;
 
@@ -180,7 +185,7 @@ int main() {
             mainQ3();
 			break;
 		case 4:
-
+            mainQ4();
 			break;
 		case 5:
 

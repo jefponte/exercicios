@@ -4,7 +4,7 @@
 
 int main()
 {
-    int dimensao, i;
+    int dimensao, i,j;
     int *lista;
     printf("Digite o valor de N, dimensao do vetor:\n");
     scanf("%d", &dimensao);
@@ -16,6 +16,12 @@ int main()
     for(i = 0; i < dimensao; i++){
         printf("Digite o elemento %d:", i);
         scanf("%d", (lista+i));
+    }
+    //Verificar se existem repeticoes
+    for(i = 0; i < dimensao; i++){
+        for(j = 0; j < dimensao; j++){
+
+        }
     }
 
 

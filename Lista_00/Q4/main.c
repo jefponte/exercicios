@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int main()
 {
-    printf("Hello world!\n");
+    int n;
+    printf("Digite o valor de N:\n");
+    scanf("%d",&n);
+
+
     return 0;
 }

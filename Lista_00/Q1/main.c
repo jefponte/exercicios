@@ -1,14 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
-
-void mostraVetor(int *vetor, int dimensao){
-	int i;
-	for(i = 0; i < dimensao; i++)
-		printf("Elemento [%d]: %d\n", i, vetor[i]);
-}
-
+#define FALSE 0
+#define TRUE !FALSE
 
 
 int main(){
@@ -27,26 +20,22 @@ int main(){
 
 	//Ordem decrescente.
 	do{
-		houveTroca = 0;
+		houveTroca = FALSE;
 		for(i = 0; i < (dimensao - 1); i++){
 			if(lista[i] < lista[i+1]){
 				aux = lista[i];
 				lista[i] = lista[i+1];
 				lista[i+1] = aux;
-				houveTroca = 1;
+				houveTroca = TRUE;
 			}
 		}
 	}while(houveTroca);
-
-
 	printf("\nLista ordenada:\n ");
 	mostraVetor(lista, dimensao);
-
 	impar = 0;
 	par = 0;
 	aux = 0;
 	media = 0;
-
     printf("Teste");
 	for(i = 0; i < dimensao; i++){
 		if(lista[i]%2){
@@ -69,4 +58,8 @@ int main(){
 	return 0;
 }
 
-
+void mostraVetor(int *vetor, int dimensao){
+	int i;
+	for(i = 0; i < dimensao; i++)
+		printf("Elemento [%d]: %d\n", i, vetor[i]);
+}

@@ -8,14 +8,12 @@ void mostraVetor(int *vetor, int dimensao){
 	for(i = 0; i < dimensao; i++)
 		printf("Elemento [%d]: %d\n", i, vetor[i]);
 }
-
-
 void ordenacaoBolha(int *lista, int dimensao){
     int houveTroca, i, aux;
 	do{
 		houveTroca = FALSE;
 		for(i = 0; i < (dimensao - 1); i++){
-			if(lista[i] < lista[i+1]){
+			if(lista[i] > lista[i+1]){
 				aux = lista[i];
 				lista[i] = lista[i+1];
 				lista[i+1] = aux;
@@ -24,12 +22,26 @@ void ordenacaoBolha(int *lista, int dimensao){
 		}
 	}while(houveTroca);
 }
+int pesquisaBinaria(int *lista, int dimensao, int pesquisado){
+    int comeco = 0;
+    int fim = dimensao - 1;
+    int meio;
 
+
+    while(comeco <= fim){
+        meio = (comeco+fim)/2;
+        if(pesquisado < lista[meio])
+            fim = meio - 1;
+        else if(pesquisado > lista[meio])
+            comeco = meio + 1;
+        else
+            return meio;
+    }
+    return -1;
+
+}
 void retiraDaLista(int *lista, int *dimensao, int posicao){
     int i;
-    printf("Quero eliminar %d\n", *(lista+posicao));
-
-
     for(i = posicao; i < (*dimensao)-1; i++){
         *(lista+i) = *(lista+i+1);
     }
@@ -38,7 +50,7 @@ void retiraDaLista(int *lista, int *dimensao, int posicao){
 
 int main()
 {
-    int dimensao, i,j, flagRepetiu, removidos;
+    int dimensao, i,j, flagRepetiu, removidos, pesquisado;
     int *lista;
     printf("Digite o valor de N, dimensao do vetor:\n");
     scanf("%d", &dimensao);
@@ -51,10 +63,6 @@ int main()
         printf("Digite o elemento %d:", i);
         scanf("%d", (lista+i));
     }
-
-    printf("Lista como foi digitado:\n");
-    mostraVetor(lista, dimensao);
-
     removidos = 0;
 
     for(i = 0; i < dimensao; i++){
@@ -67,7 +75,26 @@ int main()
             }
         }
     }
-    printf("%d removidos:\n", removidos);
-    printf("Lista depois de remover:\n");
+    if(!removidos){
+        printf("Ok\n");
+    }else{
+        printf("%d removido(s):\n", removidos);
+    }
+
+
+    printf("Digite o elemento que deseja pesquisar:\n");
+    scanf("%d", &pesquisado);
+    ordenacaoBolha(lista, dimensao);
+    printf("Lista ordenada:\n");
     mostraVetor(lista, dimensao);
+    i = pesquisaBinaria(lista, dimensao, pesquisado);
+    if(i != -1)
+        printf("Encontrei na posicao %d\n", i);
+    else
+        printf("Nao encontrado\n");
+
+
+
+
+
 }

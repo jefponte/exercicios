@@ -42,26 +42,34 @@ void lerFeriado(Feriado *ptr){
 }
 
 void relatorio(Feriado *ptr, int dimensao){
-    int i, totalDeCaminhoes, caminhouesPraCamocim, totalDeOnibus;
+    int i, totalDeCaminhoes, caminhouesPraCamocim, totalDeOnibus, totalDeVeiculos;
     int destinoAracati = 0;
+    float auxiliar = 0;
     totalDeCaminhoes = 0;
     totalDeOnibus = 0;
+    totalDeVeiculos = 0;
+
 
     for(i = 0; i < dimensao; i++){
-        if((ptr+i)->destino == ARACATI)
+        totalDeVeiculos++;
+        if((ptr+i)->destino == ARACATI && (ptr+i)->veiculo == AUTOMOVEL)
             destinoAracati++;
-        if((ptr+i)->veiculo == CAMINHAO){
-            totalDeCaminhoes++;
-            if((ptr+i)->destino == CAMOCIM)
-                caminhouesPraCamocim++;
-
-
+        if((ptr+i)->veiculo == CAMINHAO && (ptr+i)->destino == CAMOCIM){
+            caminhouesPraCamocim++;
         }
         if((ptr+i)->veiculo == ONIBUS)
             totalDeOnibus++;
     }
 
-
+    printf("Total de automoveis com destino a aracati: %d\n", destinoAracati);
+    auxiliar = 0;
+    if(totalDeVeiculos)
+        auxiliar = caminhouesPraCamocim/totalDeVeiculos*100;
+    printf("Percentual de caminhoues com destino a camocim em relacao ao total de veiculos: %.2f\n", auxiliar);
+    auxiliar = 0;
+    if(totalDeVeiculos)
+        auxiliar = totalDeOnibus/totalDeVeiculos*100;
+    printf("A porcentagem de Ônibus que trafegam pela rodovia:%.2f\n", auxiliar);
 }
 
 int main()

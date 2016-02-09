@@ -52,37 +52,44 @@ void mostraCandidato(Candidato *ptr){
 }
 void relatorios(Candidato *ptr, int dimensao){
     int i, novinhasExperientes;
-    int totalFeminino,totalMasculino, totalHomensVelhos;
-    float percentualHomensVelhos;
+    int totalFeminino,totalMasculino, totalHomensVelhos, homensExperientes;
+    float percentualHomensVelhos, mediaIdadeExperientes;
 
     totalHomensVelhos = 0;
     totalMasculino = 0;
     totalFeminino = 0;
+    homensExperientes = 0;
     novinhasExperientes = 0;
+    mediaIdadeExperientes = 0;
+    percentualHomensVelhos = 0;
     for(i = 0; i < dimensao; i++){
-        if(ptr->sexo == 'M'){
+        if((ptr+i)->sexo == 'M'){
             totalMasculino++;
-            if(ptr->idade > 45){
+            if((ptr+i)->idade > 45){
                 totalHomensVelhos++;
             }
+            if((ptr+i)->experiente == 'S'){
+                mediaIdadeExperientes += (ptr+i)->idade;
+                homensExperientes++;
+            }
+
 
         }
-        else if(ptr->sexo == 'F'){
+        else if((ptr+i)->sexo == 'F'){
             totalFeminino++;
-            if(ptr->idade < 35 && ptr->experiente == 'S'){
+            if((ptr+i)->idade < 35 && (ptr+i)->experiente == 'S'){
                 novinhasExperientes++;
             }
         }
     }
-
-
-
-
+    if(homensExperientes)
+        mediaIdadeExperientes = (float)mediaIdadeExperientes/(float)homensExperientes;
+    if(totalMasculino)
+        percentualHomensVelhos = (float)totalHomensVelhos/(float)totalMasculino*100;
     printf("%d candidatos do sexo feminino e %d candidatos do sexo masculino.\n", totalFeminino, totalMasculino);
-    printf("Percentual de homens com mais de 45 %d\n", totalHomensVelhos);
-
-
-
+    printf("Percentual de homens com mais de 45 anos: %.2f %%\n", percentualHomensVelhos);
+    printf("Idade media dos homens experientes: %.2f \n", mediaIdadeExperientes);
+    printf("Mulheres com menos de 35 experientes: %d \n", novinhasExperientes);
 
 }
 

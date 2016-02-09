@@ -48,7 +48,7 @@ void relatorio(Feriado *ptr, int dimensao){
     totalDeCaminhoes = 0;
     totalDeOnibus = 0;
     totalDeVeiculos = 0;
-
+    caminhouesPraCamocim = 0;
 
     for(i = 0; i < dimensao; i++){
         totalDeVeiculos++;
@@ -61,14 +61,15 @@ void relatorio(Feriado *ptr, int dimensao){
             totalDeOnibus++;
     }
 
-    printf("Total de automoveis com destino a aracati: %d\n", destinoAracati);
+    printf("\n\nTotal de automoveis com destino a aracati: %d\n", destinoAracati);
     auxiliar = 0;
+
     if(totalDeVeiculos)
-        auxiliar = caminhouesPraCamocim/totalDeVeiculos*100;
+        auxiliar = (float)caminhouesPraCamocim/(float)totalDeVeiculos*100;
     printf("Percentual de caminhoues com destino a camocim em relacao ao total de veiculos: %.2f\n", auxiliar);
     auxiliar = 0;
     if(totalDeVeiculos)
-        auxiliar = totalDeOnibus/totalDeVeiculos*100;
+        auxiliar = (float)totalDeOnibus/(float)totalDeVeiculos*100;
     printf("A porcentagem de Ônibus que trafegam pela rodovia:%.2f\n", auxiliar);
 }
 

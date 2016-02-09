@@ -46,6 +46,32 @@ void mostraFuncionario(Funcionario *ptr){
 	printf("Producao:%d\n", ptr->producao);
 }
 void relatorios(Funcionario *ptr, int dimensao){
+    int i, producaoTotal, producaoMasculina, producaoFeminina, maiorProducao;
+    char *nomeDoCampeao;
+
+    maiorProducao = 0;
+    producaoFeminina = 0;
+    producaoMasculina = 0;
+    producaoTotal = 0;
+    for(i = 0; i < dimensao; i++){
+        producaoTotal += (ptr+i)->producao;
+        if(maiorProducao < (ptr+i)->producao){
+            maiorProducao = (ptr+i)->producao;
+            nomeDoCampeao = (ptr+i)->nome;
+        }
+        if((ptr+i)->sexo == 'M')
+        {
+            producaoMasculina += (ptr+i)->producao;
+        }
+        else if((ptr+i)->sexo == 'F'){
+
+            producaoFeminina += (ptr+i)->producao;
+
+        }
+    }
+    printf("Producao total: %d, producao masculina: %d, producao feminina: %d\n", producaoTotal, producaoMasculina, producaoFeminina);
+    printf("Campeao de producao foi %s com %d pecas produzidas\n", nomeDoCampeao, maiorProducao);
+
 
 }
 

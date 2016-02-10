@@ -18,6 +18,30 @@ void lerCaixa(Caixa *ptr){
     printf("Digite o valor:(R$)\n ");
     scanf("%f", &ptr->valor);
 }
+void mostraLista(Caixa *ptr, int dimensao){
+
+    int i;
+    for(i = 0; i < dimensao; i++){
+        printf("\n------------------------\n");
+        printf("Caixa %d\n", i);
+        mostrarCaixa(ptr+i);
+        printf("\n------------------------\n");
+    }
+}
+int recordVector(const char *filename, Caixa *ptr, int dim){
+
+	FILE *output;
+
+	if((output = fopen(filename, "ab")) == NULL){
+		return FALSE;
+	}
+	fwrite((Caixa *)ptr, sizeof(Caixa), dim, output);
+	fclose(output);
+	return TRUE;
+
+}
+
+
 
 void mostrarCaixa(Caixa *ptr){
 
@@ -26,8 +50,40 @@ void mostrarCaixa(Caixa *ptr){
 
 
 }
+int retornaDimensao(const char *filename) {
+	char ch;
+	int i = 0;
 
-void lerVetor(Caixa *ptr, int dimensao){
+	FILE *fd;
+
+	if ((fd = fopen(filename, "rb")) == NULL) {
+		printf("O arquivo não pode ser aberto");
+
+		return 0;
+	}
+	while (!feof(fd)) {
+		ch = getc(fd);
+		i++;
+	}
+	fclose(fd);
+	return i/sizeof(Caixa);
+
+}
+int loadVector(const char *filename, Caixa *ptr, int dim){
+
+	FILE *input;
+
+	if((input = fopen(filename, "rb")) == NULL){
+		return FALSE;
+	}
+
+	fread((Caixa *)ptr, sizeof(Caixa), dim, input);
+	fclose(input);
+
+	return TRUE;
+
+}
+void lerLista(Caixa *ptr, int dimensao){
     int i;
     for(i = 0; i < dimensao; i++){
         printf("Ler caixa %d:\n", i);

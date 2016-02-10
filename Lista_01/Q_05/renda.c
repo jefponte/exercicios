@@ -2,6 +2,19 @@
 #include <stdlib.h>
 #include "renda.h"
 
+int recordVector(const char *filename, Renda *ptr, int dim){
+
+	FILE *output;
+
+	if((output = fopen(filename, "ab")) == NULL){
+		return FALSE;
+	}
+	fwrite((Renda *)ptr, sizeof(Renda), dim, output);
+	fclose(output);
+	return TRUE;
+
+}
+
 
 
 
@@ -36,21 +49,23 @@ void lerRenda(Renda *ptr){
 }
 void mostrarRenda(Renda *ptr){
         printf("Sexo: %c\n", ptr->sexo);
-        printf("Estado civil ");
+        printf("Estado civil: ");
         switch(ptr->estadoCivil){
             case SOLTEIRO:
-                printf("Solteiro\n");
+                    printf("Solteiro\n");
+                    break;
             case CASADO:
-                   printf("Casado\n");
-                break;
-                case VIUVO:
+                    printf("Casado\n");
+                    break;
+            case VIUVO:
                     printf("Viuvo\n");
-                break;
-                case DIVORCIADO:
+                    break;
+            case DIVORCIADO:
                    printf("Divorciado\n");
-                default:
+                    break;
+            default:
                     printf("\n");
-            break;
+                    break;
         }
         printf("Idade: %d\n",ptr->idade);
         printf("Renda: %.2f\n", ptr->rendaAnual);
@@ -80,8 +95,6 @@ void relatorio(Renda *ptr, int dimensao){
                 media += ptr->rendaAnual;
                 aux++;
             }
-
-
         }
 
 
@@ -96,5 +109,39 @@ void relatorio(Renda *ptr, int dimensao){
         percentualDivorciados = (float)divorciados/(float)homens*100;
     printf("A porcentagem dos homens divorciados em relação ao total de homens %.2f.\n", percentualDivorciados);
     printf("A  renda anual média das mulheres casadas com idade entre 20 e 40 an os (inclusive) %.2f\n", media);
+
+}
+
+int retornaDimensao(const char *filename) {
+	char ch;
+	int i = 0;
+
+	FILE *fd;
+
+	if ((fd = fopen(filename, "rb")) == NULL) {
+		printf("O arquivo não pode ser aberto");
+
+		return 0;
+	}
+	while (!feof(fd)) {
+		ch = getc(fd);
+		i++;
+	}
+	fclose(fd);
+	return i/sizeof(Renda);
+}
+
+int loadVector(const char *filename, Renda *ptr, int dim){
+
+	FILE *input;
+
+	if((input = fopen(filename, "rb")) == NULL){
+		return FALSE;
+	}
+
+	fread((Renda *)ptr, sizeof(Renda), dim, input);
+	fclose(input);
+
+	return TRUE;
 
 }

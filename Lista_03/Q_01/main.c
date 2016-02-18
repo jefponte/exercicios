@@ -18,7 +18,9 @@ void showVector(int *ptr, int dimensao){
         printf("[%d]:%d \n", i, *(ptr+i));
     }
 }
+void quickSort(int *lista, int dimensao){
 
+}
 
 void bubbleSort(int *lista, int dimensao){
     int i, j, aux;
@@ -70,6 +72,7 @@ void insertionSort(int *lista, int tamanho)
 }
 
 
+
 int main()
 {
     int lista[DIMENSAO];
@@ -88,7 +91,6 @@ int main()
     scanf("%d", &comando);
 
     switch(comando){
-
         case 1:
             bubbleSort(lista, DIMENSAO);
             break;
@@ -99,6 +101,7 @@ int main()
             selectionSort(lista, DIMENSAO);
             break;
         case 5:
+            quickSort(lista, DIMENSAO);
             break;
         default:
             printf("Comando nao encontrado.");

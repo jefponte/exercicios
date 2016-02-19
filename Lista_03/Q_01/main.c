@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define DIMENSAO 5
+#define DIMENSAO 10
 
 
 
@@ -19,33 +19,6 @@ void showVector(int *ptr, int dimensao){
     }
 }
 void quickSort(int n, int *v){
-    if(n <= 1)
-        return;
-    int x, a, b, temp;
-    x = *v;
-    a = 1;
-    b = n-1;
-    do{
-        while(a < n && v[a] <= x)
-            a++;
-        while(v[b] > x)
-            b--;
-        if(a < b){
-            temp = v[a];
-            v[a] = v[b];
-            v[b] = temp;
-            a++;
-            b--;
-        }
-
-
-    }while(a <= b);
-    v[0] = v[b];
-    v[b] = x;
-
-    quickSort(b, v);
-    quickSort(n-a, (v+a));
-
 
 }
 
@@ -129,7 +102,6 @@ int main()
             break;
         case 5:
             quickSort(lista, DIMENSAO);
-
             break;
         default:
             printf("Comando nao encontrado.");

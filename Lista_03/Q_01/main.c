@@ -84,6 +84,7 @@ void quickSort( int *vetorDesordenado, int posicaoInicio, int posicaoFim )
    }
 }
 
+
 int partition( int *vetorDesordenado, int posicaoInicio, int posicaoFim )
 {
    int x,i,j,auxiliar;

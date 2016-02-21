@@ -73,45 +73,40 @@ void insertionSort(int *lista, int tamanho)
 
 
 
-void quickSort( int *vetorDesordenado, int posicaoInicio, int posicaoFim )
+void quickSort( int *lista, int esquerda, int direita )
 {
-   int pivot;
-   if (posicaoInicio < posicaoFim)
-   {
-      pivot = partition( vetorDesordenado, posicaoInicio, posicaoFim);
-      quickSort( vetorDesordenado, posicaoInicio, pivot);
-      quickSort(vetorDesordenado, pivot+1, posicaoFim);
-   }
+    int pivot, i, j, x, aux;
+    if (esquerda < direita)
+    {
+
+        x = lista[esquerda];
+        i = esquerda;
+        j = direita;
+
+        do{
+            while( lista[j] > x ){
+                j--;
+            }
+            while( lista[i] < x ){
+                i++;
+            }
+            if (i < j)
+            {
+                aux = lista[i];
+                lista[i] = lista[j];
+                lista[j] = aux;
+            }
+            else
+            {
+                pivot = j;
+                break;
+            }
+        }while(1);
+        quickSort( lista, esquerda, pivot);
+        quickSort(lista, pivot+1, direita);
+    }
 }
 
-
-int partition( int *vetorDesordenado, int posicaoInicio, int posicaoFim )
-{
-   int x,i,j,auxiliar;
-   x = vetorDesordenado[posicaoInicio];
-   i = posicaoInicio - 1;
-   j = posicaoFim + 1;
-
-   do{
-      do {
-            j--;
-      } while( vetorDesordenado[j] > x );
-      do {
-            i++;
-      } while( vetorDesordenado[i] < x );
-
-      if (i < j)
-      {
-         auxiliar = vetorDesordenado[i];
-         vetorDesordenado[i] = vetorDesordenado[j];
-         vetorDesordenado[j] = auxiliar;
-      }
-      else
-      {
-         return j;
-      }
-   }while(1);
-}
 void loadVector(int *lista, int dimensao){
     int i;
     for(i = 0; i < dimensao; i++){
@@ -158,9 +153,6 @@ int main()
         }
         printf("Depois da ordenacao:\n");
         showVector(lista, DIMENSAO);
-
     }while(comando);
-
-
     return 0;
 }

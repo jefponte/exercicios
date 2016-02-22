@@ -73,12 +73,50 @@ void insertionSort(int *lista, int tamanho)
 
 
 
+ void outroQickSort(int* array,int total){
+        int esquerda[total];
+        int direita[total];
+        int meio;
+        int id, ie;
+        int i, j;
+        if(total==1){
+            return;
+        }
+
+
+        meio=(int)total/2;
+
+        id=0;
+        ie=0;
+        for (i = 0;i<total;i++){
+            if(array[i]<=array[meio]){
+                esquerda[ie]=array[i];
+                ie++;
+            }
+            else{
+                direita[id]=array[i];
+                id++;
+            }
+
+        }
+        for(i = 0; i < ie; i++){
+            array[i] = esquerda[i];
+        }
+        for(j = 0; j < id; j++){
+            array[i+j] = direita[j];
+        }
+
+        outroQickSort(array,ie);
+        outroQickSort(array+ie,id);
+}
+
+
+
 void quickSort( int *lista, int esquerda, int direita )
 {
     int pivot, i, j, x, aux;
     if (esquerda < direita)
     {
-
         x = lista[esquerda];
         i = esquerda;
         j = direita;

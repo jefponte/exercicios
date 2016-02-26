@@ -24,6 +24,7 @@ void box_listar(Box* lista){
 }
 void inserir_final(Box *lista, char conteudo){
     Box *p = lista;
+
     for(p = lista; p->proximo != NULL; p = p->proximo){
     }
     p->proximo = (Box*)malloc(sizeof(Box));
@@ -111,36 +112,73 @@ int main()
     char letra;
     Box *lista = NULL;
 
+
     lista = inserir_inicio(lista, 'c');
-
+    //1
+    inserir_final(lista, 'A');
+    box_listar(lista);
+    //2
+    lista = inserir_inicio(lista, 'B');
+    box_listar(lista);
+    //3
+    inserir_final(lista, 'C');
+    box_listar(lista);
+    //4
+    inserir_final(lista, 'D');
     box_listar(lista);
 
-    inserir_final(lista, 'h');
-
+    //5
+    insere_entre_dois(lista, 'A', 'C', 'E');
     box_listar(lista);
 
-    inserir_final(lista, 'j');
-
-    insere_entre_dois(lista, 'c', 'h', 'a');
-
+    //6
+    lista = eliminar(lista, 'C');
     box_listar(lista);
-    lista = eliminar(lista, 'h');
+
+    //7
+    inserir_final(lista, 'F');
     box_listar(lista);
+
+    //8
+    lista = inserir_inicio(lista, 'G');
+    box_listar(lista);
+
+    //9
+    eliminar_final(lista);
     lista = excluir_primeiro(lista);
     box_listar(lista);
-    eliminar_final(lista);
-    box_listar(lista);
-    inserir_final(lista, 'j');
-    inserir_final(lista, 'w');
-    inserir_final(lista, 'x');
-    inserir_final(lista, 'v');
 
+    //10
+    insere_entre_dois(lista, 'A', 'E', 'H');
     box_listar(lista);
-    lista = eliminar(lista, 'w');
-
-    box_listar(lista);
-
+    //11
     lista = eliminar(lista, 'a');
+    box_listar(lista);
+    //12
+    insere_entre_dois(lista, 'E', 'D', 'I');
+    box_listar(lista);
+
+    //13
+    inserir_final(lista, 'J');
+    box_listar(lista);
+   //14
+    insere_entre_dois(lista, 'B', 'H', 'K');
+    box_listar(lista);
+    //15
+    lista = eliminar(lista, 'D');
+    lista = eliminar(lista, 'K');
+    lista = eliminar(lista, 'I');
+    lista = eliminar(lista, 'B');
+
+    box_listar(lista);
+    //16
+    inserir_final(lista, 'L');
+    box_listar(lista);
+
+
+
+
+
     box_listar(lista);
 
     return 0;

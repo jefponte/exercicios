@@ -8,64 +8,43 @@ typedef struct box{
 
 }Box;
 
-void mostrarLista(Box *lista){
-    printf("Vamos mostrar");
+
+Box* inserir_inicio(Box* lista, char conteudo){
+    Box* novo = (Box*)malloc(sizeof(Box));
+    novo->conteudo = conteudo;
+    novo->proximo = lista;
+    return novo;
+}
+void box_listar(Box* lista){
     Box *p;
-    p = lista;
-    while(p != NULL){
-        printf("%c\n", lista->conteudo);
-        p = lista->proximo;
+    printf("\n\n-----------Listando-----------\n\n");
+    for(p = lista; p != NULL; p = p->proximo){
+        printf("Conteudo: %c\n", p->conteudo);
     }
 }
-void inserirNaFrente(Box *lista, char letra){
-    if(lista == NULL){
-        lista = (Box*)malloc(sizeof(Box));
-        lista->conteudo = letra;
-        lista->proximo = NULL;
-    }
-    else{
-        lista->proximo = (Box*)malloc(sizeof(Box));
-        lista->proximo->conteudo = letra;
-        lista->proximo->proximo = NULL;
-    }
+Box* inserir_final(Box *lista, char conteudo){
+    Box *p;
+
+    return p;
+
 }
-
-
 int main()
 {
-    int comando;
     char letra;
     Box *lista = NULL;
-    //mostrarLista(lista);
 
-    do{
-        printf("Digite um comando:\n\n");
+    lista = inserir_inicio(lista, 'c');
 
-        printf("0 para encerrar\n");
-        printf("1 - Novo elmento no final da lista.\n");
-        printf("2 - Novo elemento no inicio da lista\n");
-        printf("3 - Inserir a partir de um elemento encontrado\n");
-        printf("4 - Excluir um elemento por conteudo\n");
-        printf("5 - Excluir Ultimo\n");
-        printf("6 - Excluir Primeiro\n");
-        printf("7 - Mostrar lista\n");
-        scanf("%d", &comando);
-        switch(comando){
-            case 1:
-                printf("digite um caracter\n");
-                getchar();
-                scanf("%c", &letra);
-                inserirNaFrente(lista, letra);
-            break;
-            case 7:
-                mostrarLista(lista);
-                break;
-            default:
-                printf("Comando desconhecido\n");
-            break;
-        }
+    box_listar(lista);
 
-    }while(comando);
-    printf("Adeus!");
+    lista = inserir_final(lista, 'h');
+
+    box_listar(lista);
+
+    lista = inserir_final(lista, 'j');
+
+    box_listar(lista);
+
+
     return 0;
 }

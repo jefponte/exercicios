@@ -36,16 +36,21 @@ No* inserir_numero(No* lista, int conteudo){
 	novo->proximo = lista;
 	return novo;
 }
+
+void no_print(No*no){
+	if(no->operador == '_'){
+		printf("%d", no->numero);					
+	}else{
+		printf("%c", no->operador);
+	}
+
+
+}
 void box_listar(No* lista){
 	No *p;
 	printf("\n\n-----------Listando-----------\n\n");
 	for(p = lista; p != NULL; p = p->proximo){
-		if(p->operador == '_'){
-			printf("Conteudo: %d\n", p->numero);					
-		}else{
-			printf("Operador: %c\n", p->operador);
-		}
-
+		no_print(p);
 	}
 }
 
@@ -59,6 +64,7 @@ No* strEmpilhar(char *palavra){
 
 		if(isdigit(palavra[i])){
 			subPalavra[flag] = palavra[i];
+			subPalavra[flag+1] = '\0';
 			flag++;
 		}
 		else{
@@ -78,16 +84,71 @@ No* strEmpilhar(char *palavra){
 	return lista;
 
 }
+No* excluir_primeiro(No*lista){
+    No*excluido;
+    excluido = lista;
+    lista = lista->proximo;
+    free(excluido);
+    return lista;
+}
+int opera(int a, int b, char operador){
+	switch(operador){
+		case '+':
+			printf("\n%d+%d=%d\n", b, a, a+b);
+			return  a+b;				
+		break;
+		case '-':
+			printf("\n%d-%d=%d\n", b, a, b-a);
+			return b-a;
+		break;
+		case '/':
+			printf("\n%d/%d=%d\n", b, a, b/a);
+			return b/a;
+		break;
+		case '*':
+			printf("\n%d*%d=%d\n",b, a, b*a);
+			return a*b;
+		break;
+		default:
+			return  a+b;
+		break;
+	}
 
+}
+No* resolvePilha(No* lista){
+	No *p;
+	No *anterior;
+	int resultado;
+	anterior = lista;
+
+	for(p = lista; p->proximo != NULL; p = p->proximo){
+		if(p->proximo->proximo != NULL)
+		{
+			p->proximo->proximo->numero = opera(p->numero, p->proximo->proximo->numero, p->proximo->operador);
+			p = excluir_primeiro(p);
+			p = excluir_primeiro(p);
+			box_listar(p);
+
+		}
+		p = resolvePilha(p);
+		break;			
+	}
+	return p;
+	
+	
+}
 int main()
 {
 	No*lista = NULL;
 	char palavra[100];
-	//lista = strEmpilhar("12+90*25");
-	printf("Digite a equação:\n");
-	scanf("%s", palavra);
-	lista = strEmpilhar(palavra);
-
+	
+	lista = strEmpilhar("4*1-10+4*4");
+	
+	//printf("Digite a equação:\n");
+	//scanf("%s", palavra);
+	//lista = strEmpilhar(palavra);
+	box_listar(lista);
+	lista = resolvePilha(lista);
 	box_listar(lista);
 	return 0;
 }

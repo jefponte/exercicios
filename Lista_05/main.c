@@ -21,7 +21,7 @@ typedef struct no{
 	struct no *proximo;
 }No;
 
-No* inserir_inicio(No* lista, char conteudo){
+No* inserirInicio(No* lista, char conteudo){
 	No* novo = (No*)malloc(sizeof(No));
 	novo->operador = conteudo;
 	novo->proximo = lista;
@@ -29,7 +29,7 @@ No* inserir_inicio(No* lista, char conteudo){
 }
 
 
-No* inserir_numero(No* lista, int conteudo){
+No* inserirNumero(No* lista, int conteudo){
 	No* novo = (No*)malloc(sizeof(No));
 	novo->operador = '_';
 	novo->numero = conteudo;
@@ -37,7 +37,7 @@ No* inserir_numero(No* lista, int conteudo){
 	return novo;
 }
 
-void no_print(No*no){
+void noPrint(No*no){
 	if(no->operador == '_'){
 		printf("%d", no->numero);					
 	}else{
@@ -46,11 +46,11 @@ void no_print(No*no){
 
 
 }
-void box_listar(No* lista){
+void boxListar(No* lista){
 	No *p;
 	printf("\n\n-----------Listando-----------\n\n");
 	for(p = lista; p != NULL; p = p->proximo){
-		no_print(p);
+		noPrint(p);
 	}
 }
 
@@ -70,12 +70,12 @@ No* strEmpilhar(char *palavra){
 		else{
 			if(flag){
 				subPalavra[i] = '\0';
-				lista =  inserir_numero(lista, atoi(subPalavra));
+				lista =  inserirNumero(lista, atoi(subPalavra));
 				subPalavra[0] = '\0';
 				flag = 0;
 			}
 			if(palavra[i] != '\0'){
-				lista = inserir_inicio(lista, palavra[i]);				
+				lista = inserirInicio(lista, palavra[i]);				
 			}else{
 				break;
 			}
@@ -84,7 +84,7 @@ No* strEmpilhar(char *palavra){
 	return lista;
 
 }
-No* excluir_primeiro(No*lista){
+No* excluirPrimeiro(No*lista){
     No*excluido;
     excluido = lista;
     lista = lista->proximo;
@@ -125,9 +125,9 @@ No* resolvePilha(No* lista){
 		if(p->proximo->proximo != NULL)
 		{
 			p->proximo->proximo->numero = opera(p->numero, p->proximo->proximo->numero, p->proximo->operador);
-			p = excluir_primeiro(p);
-			p = excluir_primeiro(p);
-			box_listar(p);
+			p = excluirPrimeiro(p);
+			p = excluirPrimeiro(p);
+			boxListar(p);
 
 		}
 		p = resolvePilha(p);
@@ -147,8 +147,8 @@ int main()
 	//printf("Digite a equação:\n");
 	//scanf("%s", palavra);
 	//lista = strEmpilhar(palavra);
-	box_listar(lista);
+	boxListar(lista);
 	lista = resolvePilha(lista);
-	box_listar(lista);
+	boxListar(lista);
 	return 0;
 }

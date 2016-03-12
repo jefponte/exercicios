@@ -160,10 +160,11 @@ No* resolvePilha(No* lista){
 	No *p;
 	No *anterior;
 	int resultado;
+	int parenteses = 0;
 	anterior = lista;
-
-	for(p = lista; p->proximo != NULL; p = p->proximo){
-
+	
+	for(p = lista;p->proximo != NULL ; p = p->proximo){
+		
 		if(p->proximo->proximo != NULL)
 		{
 			p->proximo->proximo->numero = opera(p->numero, p->proximo->proximo->numero, p->proximo->operador);
@@ -175,9 +176,6 @@ No* resolvePilha(No* lista){
 		p = resolvePilha(p);
 		break;
 	}
-	
 	return p;
-
-
 }
 

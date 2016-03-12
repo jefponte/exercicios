@@ -29,23 +29,27 @@ No* excluirPrimeiro(No*lista);
 int opera(int a, int b, char operador);
 No* resolveParenteses(No* lista);
 No* resolvePilha(No* lista);
-void mostraInvertido(No* lista);
-char* itoa(int i, char b[]);
 
 int main()
 {
 	No*lista = NULL;
-	char palavra[100];
-
-	lista = strEmpilhar("4*1-10+4*4");
-
-	//printf("Digite a equação:\n");
-	//scanf("%s", palavra);
-	//lista = strEmpilhar(palavra);
-	mostraInvertido(lista);
+	char palavra[100] = "4*1-10+4*4";
+	
+	printf("Equacao: %s\n", palavra);
+	lista = strEmpilhar(palavra);
 	lista = resolvePilha(lista);
 	boxListar(lista);
-
+	
+	printf("Digite a equação:\n");
+	scanf("%s", palavra);
+	printf("Equacao: %s\n", palavra);
+	free(lista);
+	lista = NULL;
+	lista = strEmpilhar(palavra);
+	lista = resolvePilha(lista);
+	boxListar(lista);
+	free(lista);
+	lista = NULL;
 	return 0;
 }
 
@@ -79,11 +83,11 @@ void noPrint(No*no){
 }
 void boxListar(No* lista){
 	No *p;
-	printf("\n\n-----------Listando-----------\n\n");
+	printf("\n\n-----------Resultado-----------\n\n");
 	for(p = lista; p != NULL; p = p->proximo){
 		noPrint(p);
 	}
-	printf("\n");
+	printf("\n\n-----------Resultado-----------\n\n");
 }
 
 No* strEmpilhar(char *palavra){
@@ -150,38 +154,6 @@ int opera(int a, int b, char operador){
 
 }
 
-No* resolveParenteses(No* lista){
-	No *p;
-	No *anterior;
-	int resultado;
-	anterior = lista;
-
-	for(p = lista; p->proximo->operador != '('; p = p->proximo){
-		if(p->operador == ')'){
-			p = excluirPrimeiro(lista);
-			p = resolveParenteses(p);
-		}
-
-		if(p->proximo->proximo != NULL)
-		{
-			p->proximo->proximo->numero = opera(p->numero, p->proximo->proximo->numero, p->proximo->operador);
-			p = excluirPrimeiro(p);
-			p = excluirPrimeiro(p);
-			
-
-		}
-		p = resolvePilha(p);
-		break;
-	}
-	anterior = p->proximo;
-	p->proximo = p->proximo->proximo;
-	free(anterior);
-	
-	return p;
-
-
-}
-
 
 
 No* resolvePilha(No* lista){
@@ -191,10 +163,7 @@ No* resolvePilha(No* lista){
 	anterior = lista;
 
 	for(p = lista; p->proximo != NULL; p = p->proximo){
-		if(p->operador == ')'){
-			p = excluirPrimeiro(lista);
-			p = resolveParenteses(p);
-		}
+
 		if(p->proximo->proximo != NULL)
 		{
 			p->proximo->proximo->numero = opera(p->numero, p->proximo->proximo->numero, p->proximo->operador);
@@ -211,62 +180,4 @@ No* resolvePilha(No* lista){
 
 
 }
-char* itoa(int i, char b[]){
-    char const digit[] = "0123456789";
-    char* p = b;
-    if(i<0){
-        *p++ = '-';
-        i *= -1;
-    }
-    int shifter = i;
-    do{ //Move to where representation ends
-        ++p;
-        shifter = shifter/10;
-    }while(shifter);
-    *p = '\0';
-    do{ //Move back, inserting digits as u go
-        *--p = digit[i%10];
-        i = i/10;
-    }while(i);
-    return b;
-}
 
-void mostraInvertido(No* lista){
-	No *p;
-	char operador[2];
-	operador[1] = '\0';
-	char palavra[100];
-	char final[100];
-
-	palavra[0] = '\0';
-	printf("\n\n-----------Listando-----------\n\n");
-	for(p = lista; p != NULL; p = p->proximo){
-		if(p->operador == '_'){
-			strcat(final, itoa (p->numero,palavra));
-			
-		}else{
-
-		    operador[0] = p->operador;
-		    strcat(final, operador);
-			
-		}
-	}
-	//printf("%s", final);
-	p = strEmpilhar(final);
-	final[0] ='=';
-	final[1] = '\0';
-
-	for(; p != NULL; p = p->proximo){
-		if(p->operador == '_'){
-			strcat(final, itoa (p->numero,palavra));
-			
-		}else{
-
-		    operador[0] = p->operador;
-		    strcat(final, operador);
-			
-		}
-	}
-	printf("\n%s\n", final);
-
-}

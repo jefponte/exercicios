@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define FALSE 0
+#define TRUE !FALSE
 #include <ctype.h>
 
 /*Cada elemento pode ser um
@@ -20,7 +22,7 @@ typedef struct no{
 }No;
 
 No* inserir_inicio(No* lista, char conteudo){
-	No* novo = (No*)malloc(sizeof(Box));
+	No* novo = (No*)malloc(sizeof(No));
 	novo->operador = conteudo;
 	novo->proximo = lista;
 	return novo;
@@ -28,7 +30,7 @@ No* inserir_inicio(No* lista, char conteudo){
 
 
 No* inserir_numero(No* lista, int conteudo){
-	No* novo = (No*)malloc(sizeof(Box));
+	No* novo = (No*)malloc(sizeof(No));
 	novo->operador = '_';
 	novo->numero = conteudo;
 	novo->proximo = lista;
@@ -47,32 +49,33 @@ void box_listar(No* lista){
 	}
 }
 int main()
-{
-	char palavra[100];
-	char car;
+{	
+	int i, flag;
+	char palavra[100] = "12+34+40";
 	char subPalavra[100];
-	No *lista = NULL;
-	int i;
-	printf("Digite a expressao: ");
-	scanf("%s", palavra);
-	printf("%s", palavra);
+	No*lista = NULL;
+	
+	flag = 0;
+	for(i = 0; TRUE; i++){
 
-	for(i = 0; palavra[i] != '\0'; i++){
-		subPalavra[i] = palavra[i];
-		if(!isdigit(palavra[i])){
-
-			car = palavra[i];
-			subPalavra[i] = '\0';
-			strcpy(&palavra[0], &palavra[i+1]);
-			i = 0;
-		}else
-			continue;
-		
-		lista =  inserir_numero(lsita, atoi(subPalavra));
-		lista = inserir_inicio(lista, car);
+		if(isdigit(palavra[i])){
+			subPalavra[flag] = palavra[i];
+			flag++;
+		}
+		else{
+			if(flag){
+				subPalavra[i] = '\0';
+				lista =  inserir_numero(lista, atoi(subPalavra));
+				subPalavra[0] = '\0';
+				flag = 0;
+			}
+			if(palavra[i] != '\0'){
+				lista = inserir_inicio(lista, palavra[i]);				
+			}else{
+				break;
+			}
+		}
 	}
 	box_listar(lista);
-	
-
 	return 0;
 }

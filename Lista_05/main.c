@@ -48,10 +48,9 @@ void box_listar(No* lista){
 
 	}
 }
-int main()
-{	
+
+No* strEmpilhar(char *palavra){
 	int i, flag;
-	char palavra[100] = "12+34+40";
 	char subPalavra[100];
 	No*lista = NULL;
 	
@@ -76,6 +75,19 @@ int main()
 			}
 		}
 	}
+	return lista;
+
+}
+
+int main()
+{
+	No*lista = NULL;
+	char palavra[100];
+	//lista = strEmpilhar("12+90*25");
+	printf("Digite a equação:\n");
+	scanf("%s", palavra);
+	lista = strEmpilhar(palavra);
+
 	box_listar(lista);
 	return 0;
 }

@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cliente.h"
-
-#include <pthread.h>
-#include <sched.h>
 #include <unistd.h>
 
 int main()
 {
 
     int hora = 3600;
-    int i, aux;
+    int i;
     for(i = 0; i <= hora; i++){
-    	//sleep(1);
+    	sleep(1);
     	printHora(i);
         if(i <= 900){
             //Chega gente de 20 em 20 segundos

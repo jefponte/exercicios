@@ -10,7 +10,6 @@
 #include "cliente.h"
 
 void printHora(int intTempo){
-    char strHoras[100];
     int hours, minutes;
     if(intTempo < 0){
         intTempo = 0;

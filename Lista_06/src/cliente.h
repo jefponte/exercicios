@@ -10,13 +10,13 @@
 
 typedef struct cliente{
 
-    int horaEntrada;
-    int tempoEspera;
+    int tempoEsperado;
+    int atendido;
     struct cliente *proximo;
+
 }Cliente;
 
 void printHora(int intTempo);
-Cliente *clienteCria(void);
 
 
 

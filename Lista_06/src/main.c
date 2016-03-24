@@ -3,9 +3,6 @@
 #include <unistd.h>
 #include "fila.h"
 
-void atender() {
-
-}
 
 int main() {
 
@@ -14,6 +11,7 @@ int main() {
 	int valor;
 	int hora = 3600;
 	int i, clientesAtendidos, numeroDeServidores, j;
+	int variacao;
 	float tempoMedioDeEspera;
 	fila = filaCria();
 	atendidos = filaCria();
@@ -21,26 +19,37 @@ int main() {
 	clientesAtendidos = 0;
 	printf("Digite o número de servidores: \n");
 	scanf("%d", &numeroDeServidores);
+	variacao = 0;
 
 	for (i = 0; i < hora; i++) {
 		if (i <= 900) {
 			//Chega gente de 20 em 20 segundos
 			//Não começou a distribuição.
+
+
+
 			if (!(i % 20)) {
-				filaInsere(fila, i);
+				//Variar entre -5 e +5
+				variacao = (-5+rand()%10);
+				filaInsere(fila, (i+variacao));
 			}
 		} else if (i > 900 && i <= 1500) {
 			//Entra gente de 10 em 10 segundos.
 			//Ainda não começou a distribuição.
 			if (!(i % 10)) {
-				filaInsere(fila, i);
+				//Variar entre -6 e +6
+				variacao = (-6+rand()%12);
+
+				filaInsere(fila, (i+variacao));
 
 			}
 
 		} else if (i > 1500 && i <= 1800) {
 			//Entra gente de 5 em 5 segundos.
 			if (!(i % 5)) {
-				filaInsere(fila, i);
+				//Variar entre -3 e +3
+				variacao = (-3+rand()%6);
+				filaInsere(fila, (i+variacao));
 
 			}
 			//Não começou a distribuição.
@@ -50,7 +59,9 @@ int main() {
 
 			//Entra gente de 10 em 10 segundos na fila.
 			if (!(i % 10)) {
-				filaInsere(fila, i);
+				//Variar entre -8 e +8
+				variacao = (-8+rand()%16);
+				filaInsere(fila, (i+variacao));
 			}
 			//Inicia-se a entrega do lanche. de 4 em 4 segundos cada servidor
 			if (!(i % 4)) {
@@ -72,7 +83,10 @@ int main() {
 			//Entra gente de 20 em 20 segundos.
 
 			if (!(i % 20)) {
-				filaInsere(fila, i);
+				//Variar entre -15 e +15
+				variacao = (-15+rand()%30);
+
+				filaInsere(fila, (i+variacao));
 
 			}
 			if (!(i % 4)) {
@@ -90,7 +104,9 @@ int main() {
 		} else if (i > (1800 + 1200) && i <= (1800 + 1800)) {
 			//entra gente de 30 em 30 segundos.
 			if (!(i % 30)) {
-				filaInsere(fila, i);
+				//Variar entre -5 e +5
+				variacao = (-5+rand()%10);
+				filaInsere(fila, (i+variacao));
 
 			}
 			if (!(i % 4)) {

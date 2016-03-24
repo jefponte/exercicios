@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 #include "fila.h"
 
 
 int main() {
+
+
 
 	Fila *fila;
 	Fila *atendidos;
@@ -13,6 +16,9 @@ int main() {
 	int i, clientesAtendidos, numeroDeServidores, j;
 	int variacao;
 	float tempoMedioDeEspera;
+
+	srand((unsigned)time(NULL));
+
 	fila = filaCria();
 	atendidos = filaCria();
 	tempoMedioDeEspera = 0;

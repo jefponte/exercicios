@@ -11,6 +11,7 @@ struct lista {
 };
 typedef struct lista Lista;
 
+
 typedef struct fila {
 	Lista*inicio;
 	Lista*fim;
@@ -20,7 +21,11 @@ typedef struct fila {
 
 
 void printHora(int intTempo);
-
-
+Fila* filaCria();
+void filaInsere(Fila *fila, int conteudo);
+int filaVazia(Fila *fila);
+float filaRetira(Fila *fila);
+void filaImprime(Fila *fila);
+void mostrarCliente(Lista *lista);
 
 #endif /* FILA_H */

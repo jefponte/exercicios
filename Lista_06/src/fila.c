@@ -51,7 +51,6 @@ float filaRetira(Fila *fila) {
 	Lista *t;
 	int conteudo;
 	if (filaVazia(fila)) {
-		printf("Fila vazia\n");
 		return 0.0;
 	}
 	t = fila->inicio;
@@ -67,11 +66,14 @@ float filaRetira(Fila *fila) {
 
 void filaImprime(Fila *fila) {
 	Lista *q;
+	printf("Fila:\n");
 	for (q = fila->inicio; q != NULL; q = q->proximo) {
-		printf("Hora de entrada na fila: ");
-		printHora(q->info);
-		printf("\n");
+		mostrarCliente(q);
 	}
 
+}
+void mostrarCliente(Lista *lista){
+	printHora(lista->info);
+	printf("\n");
 }
 

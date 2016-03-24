@@ -1,27 +1,64 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "cliente.h"
 #include <unistd.h>
+#include "fila.h"
+
+
 
 int main() {
-	Cliente* fila = NULL;
-	Cliente *atendidos = NULL;
+
+	Fila *fila;
+	fila = filaCria();
+	printf("Mostrando\n");
+	filaImprime(fila);
+	filaInsere(fila, 10);
+	printf("Mostrando\n");
+	filaImprime(fila);
+	filaInsere(fila, 20);
+	printf("Mostrando\n");
+	filaImprime(fila);
+	filaInsere(fila, 30);
+	printf("Mostrando\n");
+	filaImprime(fila);
+	filaInsere(fila, 40);
+	printf("Mostrando\n");
+	filaImprime(fila);
+	filaInsere(fila, 50);
+	printf("Mostrando\n");
+	filaImprime(fila);
+	filaInsere(fila, 60);
+	printf("Mostrando\n");
+	filaImprime(fila);
+
+	int valor = filaRetira(fila);
+	printf("Retirei o %d\n", valor);
+	filaImprime(fila);
+
+	return 0;
+}
+/*
+int loop() {
+
+	//Cliente* fila = NULL;
+	//Cliente* atendidos = NULL;
 	int hora = 3600;
-	int i, atendentes;
-	printf("Digite o número de atendentes: \n");
-	scanf("%d", &atendentes);
-
-
+	int i;
 
 	for (i = 0; i <= hora; i++) {
-//		sleep(1);
+		sleep(1);
+		printf("Hora atual:");
 		printHora(i);
+		printf("\n");
+
 		if (i <= 900) {
 			//Chega gente de 20 em 20 segundos
 			//Não começou a distribuição.
 			if (!(i % 20)) {
+
 				fila = inserirFinal(fila, i);
+				printf("Na fila:\n");
 				clienteListar(fila);
+
 			}
 
 		} else if (i > 900 && i <= 1500) {
@@ -29,7 +66,6 @@ int main() {
 			//Ainda não começou a distribuição.
 			if (!(i % 10)) {
 				fila = inserirFinal(fila, i);
-				clienteListar(fila);
 
 			}
 
@@ -52,7 +88,6 @@ int main() {
 
 			}
 
-
 		} else if (i > (1800 + 600) && i <= (1800 + 1200)) {
 			//Entre 10 e 20 minutos.
 			//Entra gente de 20 em 20 segundos.
@@ -68,7 +103,18 @@ int main() {
 				clienteListar(fila);
 			}
 		}
+
 	}
 
+	fila = inserirFinal(fila, 600);
+	fila = inserirFinal(fila, 900);
+
+	printf("Clientes na fila:\n");
+	clienteListar(fila);
+	printf("Clientes atendidos:\n");
+	clienteListar(atendidos);
 	return 0;
+
 }
+
+*/

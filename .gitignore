@@ -23,3 +23,5 @@
 *.depend
 *.exe
 *.o
+*.project
+*.cproject

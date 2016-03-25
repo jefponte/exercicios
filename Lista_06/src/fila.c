@@ -32,9 +32,10 @@ Fila* filaCria() {
 	return fila;
 }
 
-void filaInsere(Fila *fila, int conteudo) {
+void filaInsere(Fila *fila, int entrada, int saida) {
 	Lista*novo = (Lista*) malloc(sizeof(Lista));
-	novo->info = conteudo;
+	novo->info = entrada;
+	novo->saida = saida;
 	novo->proximo = NULL;
 	if (fila->fim != NULL) {
 		fila->fim->proximo = novo;
@@ -73,7 +74,16 @@ void filaImprime(Fila *fila) {
 
 }
 void mostrarCliente(Lista *lista){
+	printf("\n------------------\n");
+	printf("Hora de entrada: ");
 	printHora(lista->info);
 	printf("\n");
+	printf("\nTempo de Espera: ");
+	printHora(lista->saida);
+	printf("\n");
+	printf("\nHora da Saida: ");
+	printHora(lista->info+lista->saida);
+	printf("\n\n");
+	printf("\n------------------\n");
 }
 

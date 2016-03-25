@@ -6,6 +6,7 @@
 struct lista {
 
 	int info;
+	int saida;
 	struct lista *proximo;
 
 };
@@ -22,7 +23,7 @@ typedef struct fila {
 
 void printHora(int intTempo);
 Fila* filaCria();
-void filaInsere(Fila *fila, int conteudo);
+void filaInsere(Fila *fila, int entrada, int saida);
 int filaVazia(Fila *fila);
 float filaRetira(Fila *fila);
 void filaImprime(Fila *fila);

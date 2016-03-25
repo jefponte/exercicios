@@ -37,7 +37,7 @@ int main() {
 			if (!(i % 20)) {
 				//Variar entre -5 e +5
 				variacao = (-5+rand()%10);
-				filaInsere(fila, (i+variacao));
+				filaInsere(fila, (i+variacao), 0);
 			}
 		} else if (i > 900 && i <= 1500) {
 			//Entra gente de 10 em 10 segundos.
@@ -46,7 +46,7 @@ int main() {
 				//Variar entre -6 e +6
 				variacao = (-6+rand()%12);
 
-				filaInsere(fila, (i+variacao));
+				filaInsere(fila, (i+variacao), 0);
 
 			}
 
@@ -55,7 +55,7 @@ int main() {
 			if (!(i % 5)) {
 				//Variar entre -3 e +3
 				variacao = (-3+rand()%6);
-				filaInsere(fila, (i+variacao));
+				filaInsere(fila, (i+variacao), 0);
 
 			}
 			//Não começou a distribuição.
@@ -67,7 +67,7 @@ int main() {
 			if (!(i % 10)) {
 				//Variar entre -8 e +8
 				variacao = (-8+rand()%16);
-				filaInsere(fila, (i+variacao));
+				filaInsere(fila, (i+variacao), 0);
 			}
 			//Inicia-se a entrega do lanche. de 4 em 4 segundos cada servidor
 			if (!(i % 4)) {
@@ -75,10 +75,11 @@ int main() {
 				for (j = 0; j < numeroDeServidores; j++) {
 					if (!filaVazia(fila)) {
 						valor = filaRetira(fila);
+						filaInsere(atendidos, valor, (i-valor));
 						valor = i - valor;
 						tempoMedioDeEspera += valor;
 						clientesAtendidos++;
-						filaInsere(atendidos, valor);
+
 
 					}
 				}
@@ -92,7 +93,7 @@ int main() {
 				//Variar entre -15 e +15
 				variacao = (-15+rand()%30);
 
-				filaInsere(fila, (i+variacao));
+				filaInsere(fila, (i+variacao), 0);
 
 			}
 			if (!(i % 4)) {
@@ -100,10 +101,11 @@ int main() {
 				for (j = 0; j < numeroDeServidores; j++) {
 					if (!filaVazia(fila)) {
 						valor = filaRetira(fila);
+						filaInsere(atendidos, valor, (i-valor));
 						valor = i - valor;
 						tempoMedioDeEspera += valor;
 						clientesAtendidos++;
-						filaInsere(atendidos, valor);
+
 					}
 				}
 			}
@@ -112,7 +114,7 @@ int main() {
 			if (!(i % 30)) {
 				//Variar entre -5 e +5
 				variacao = (-5+rand()%10);
-				filaInsere(fila, (i+variacao));
+				filaInsere(fila, (i+variacao), 0);
 
 			}
 			if (!(i % 4)) {
@@ -120,10 +122,11 @@ int main() {
 				for (j = 0; j < numeroDeServidores; j++) {
 					if (!filaVazia(fila)) {
 						valor = filaRetira(fila);
+						filaInsere(atendidos, valor, (i-valor));
 						valor = i - valor;
 						tempoMedioDeEspera += valor;
 						clientesAtendidos++;
-						filaInsere(atendidos, valor);
+
 					}
 				}
 			}

@@ -1,0 +1,16 @@
+Esse arquivo aqui é só o enunciado.
+Prática 14 - Alocação dinâmica de matrizes.:
+O arquivo MatrixDynamicAllocation.c é a implementação de uma aplicação para alocar,
+ler, multiplicar e exibir duas matrizes de inteiros o resultado da multiplicação
+(se for posível). A prática consiste em dar corpo aos protótipos das funções,
+visando sempre a independência ao criar as funções. Nesta prática, o aluno é
+instigado a só continuar em frente quando os passos anteriores obtiverem sucesso.
+Apenas a função principal tem o "poder" de abortar o programa... A inserção de outras
+funções fica ao critério de cada um, porém TODOS os protótipos fornecidos DEVEM ser
+implementados.
+OBS.: Tentem fazer esta aplicação para já podermos discutir sobre no início da
+próxima aula, dia 11nov. A aula será muito mais proveitosa se vcs tentarem em casa,
+antes do início da próxima aula.
+DICA IMPORTANTE: Esta prática é um pouco puxada!!! Mas caso você consiga implementar
+esta aplicação entendendo realmente tudo o que implementou e da maneira correta, voçê
+pode já ir se considerando um programador muito bom!!!

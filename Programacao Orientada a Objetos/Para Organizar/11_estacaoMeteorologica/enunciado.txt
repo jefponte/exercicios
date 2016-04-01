@@ -1,0 +1,15 @@
+Prática 11 - Implementação do Projeto da FUNCEME Weather Monitoring:
+
+
+Instruções: Abrir um projeto no Eclipse e copiar/colar (ou digitar) o
+ código fonte das classes disponibilizadas no livro "Use a cabeça - 
+ Padrões de Projeto". Executar e entender o funcionamento deste padrão 
+ de projeto.
+
+Para os danadões: na classe onde se encontra o método principal, 
+utilizar uma thread para simular a geração de novos valores de tempertura, 
+humidade e pressão (T,H,P), intervalos regulares. Nesta simulação os valores de
+ (T,H,P) podem estar pré-definidos em três vetores de doubles.
+
+Para os mais danadões ainda: implementar uma GUI que permita ao usuário ter acesso
+ a cada um das três telas fornecidas pelo aplicativo.

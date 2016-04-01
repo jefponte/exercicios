@@ -1,0 +1,4 @@
+Exercicio 0
+Faça uma tad para matriz de uma linha.
+Uma função para alocar, uma função para ler os valores do teclado, outra função para mostrar.
+

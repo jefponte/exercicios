@@ -1,0 +1,14 @@
+Prática 16 - TADs:
+
+TAD Ponto:
+Exercício: Escreva um programa que faça uso do TAD ponto definida no livro.
+Exercício: Acrescente novas operações ao TAD ponto, tais como soma e subtração de pontos.
+Exercício: Acrescente novas operações ao TAD ponto, de tal forma que seja possível
+obter uma representação do ponto em coordenadas polares.
+Exercício: Implemente um novo TAD para representar pontos no R3.
+
+TAD Matriz:
+Exercício: Escreva um programa que faça uso do TAD matriz definido no livro. Teste o seu programa com as duas implementações vistas.
+Exercício: Usando apenas as operações definidas pelo TAD matriz, implemente uma função que determine se uma matriz é ou não quadrada simétrica.
+Exercício: Usando apenas as operações definidas pelo TAD matriz, implemente uma função que, dada uma matriz, crie dinamicamente a matriz transposta correspondente.
+Exercício: Defina um TAD para implementar matrizes quadradas simétricas, de acordo com a representação sugerida no capítulo 8 do livro.

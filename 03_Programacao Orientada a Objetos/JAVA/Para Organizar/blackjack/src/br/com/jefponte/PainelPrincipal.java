@@ -35,7 +35,7 @@ public class PainelPrincipal extends JPanel{
 	
 		
 		this.deck = new Deck(1);
-		//this.deck.embaralhar();
+		this.deck.embaralhar();
 		
 		try{
 			image = ImageIO.read(getClass().getResource("/images/green.jpg"));
